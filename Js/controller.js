@@ -1,7 +1,8 @@
 hortari.controller("ctrl",function($scope,fact,$interval,$timeout){
-    var array = ['http://icons.iconarchive.com/icons/dtafalonso/android-l/256/WhatsApp-icon.png','https://png.icons8.com/cotton/2x/home.png','https://www.shareicon.net/data/128x128/2017/07/13/888383_time_512x512.png'];
+    var array = ['../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png','../images/bitcoin.png','../images/eth.ico','../images/ripple.png','../images/eos.png'];
     var items;
     var newarray;
+    
     $scope.showItems = ()=>{
         var pr = fact.talkToServer();
         
@@ -19,7 +20,7 @@ hortari.controller("ctrl",function($scope,fact,$interval,$timeout){
         if(items){
         if(items.data){
             $interval.cancel(interval);
-            console.log("cancelled");
+            // console.log("cancelled");
         }
     }
 
@@ -47,8 +48,12 @@ hortari.controller("ctrl",function($scope,fact,$interval,$timeout){
     var interval3 = $interval(function(){
         if(newarray){
             $scope.mainResult = newarray;
-            console.log(newarray);
+            // console.log(newarray);
+            $scope.loaded=false;
             $interval.cancel(interval3);
+        }
+        else{
+            $scope.loaded = true;
         }
         
     },100);   
@@ -56,6 +61,5 @@ hortari.controller("ctrl",function($scope,fact,$interval,$timeout){
     };
 
      
-
-
+console.clear();
 });

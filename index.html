@@ -18,8 +18,7 @@
     <script src="Js/controller.js"></script>
 
 </head>
-<body ng-app="hortari" ng-controller="ctrl">
-    <button ng-click="showItems()">Click Me</button>
+<body ng-app="hortari" ng-controller="ctrl" data-ng-init="showItems()">
 
     <input type="text" placeholder="Enter name to search" ng-model="search">
     <select ng-model="sort">
@@ -27,13 +26,49 @@
             <option>id</option>
         </select>
 
-    <ul>
+    <!-- <ul>
         <li ng-repeat="items in mainResult|filter:search|orderBy:sort">
             <img  ng-src="{{items.source}}" alt="{{$index}}">
             {{items.id}}
             {{items.symbol}}
 
         </li>
-    </ul>
+    </ul> -->
+
+
+    <table class="container"> 
+        <tr class="heading">
+            <th class="index">#</th>
+            <th class="name">Name</th>
+            <th>Symbol</th>
+            <th>Market Cap</th>
+            <th>Price</th>
+            <th>Circulating Supply</th>
+            <th>Volume(24h)</th>
+            <th>% 1h</th>
+            <th>% 24h</th>
+            <th>% 7d</th>
+        </tr>
+        <tr ng-repeat="items in mainResult|filter:search|orderBy:sort">
+            <td class="index">{{$index+1}}</td>
+            <td><img src="{{items.source}}" alt="{{$index}}img"> {{items.name}} </td>
+            <td>{{items.symbol}}</td>
+            <td>{{items.market_cap_usd}}</td>
+            <td>{{items.price_usd}}</td>
+            <td>{{items.available_supply}}</td>
+            <td>{{items["24h_volume_usd"]}}</td>
+            <td>{{items.percent_change_1h}}</td>
+            <td>{{items.percent_change_24h}}</td>
+            <td>{{items.percent_change_7d}}</td>
+        </tr>
+    </table>
+
+    
+
+<div ng-show="loaded" class="loading">
+<h1>PLEASE WAIT WHILE THE DATA IS BEING FETCHED</h1>
+    <img src="images/loading.gif" alt="Loading">
+</div>
+
 </body>
 </html>
