@@ -61,5 +61,7 @@ hortari.controller("ctrl",function($scope,fact,$interval,$timeout){
     };
 
      
-console.clear();
+// console.clear();
+
+
 });

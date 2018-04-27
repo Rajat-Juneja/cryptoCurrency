@@ -20,20 +20,19 @@
 </head>
 <body ng-app="hortari" ng-controller="ctrl" data-ng-init="showItems()">
 
-    <input type="text" placeholder="Enter name to search" ng-model="search">
-    <select ng-model="sort">
-            <option>symbol</option>
-            <option>id</option>
-        </select>
+    <!-- <input type="text" placeholder="Enter name to search" ng-model="search"> -->
+    Market Cap: 
+    <select ng-model="search.market_cap_usd">
+        <option selected="true">All</option>
+        <option>$1 Billion +</option>
+        <option>$100 Million - $1 Billion</option>
+    </select>
 
-    <!-- <ul>
-        <li ng-repeat="items in mainResult|filter:search|orderBy:sort">
-            <img  ng-src="{{items.source}}" alt="{{$index}}">
-            {{items.id}}
-            {{items.symbol}}
 
-        </li>
-    </ul> -->
+        <!-- <select ng-model="currencies">
+            <option selected="true">USD</option>
+            optio
+        </select> -->
 
 
     <table class="container"> 
@@ -49,17 +48,17 @@
             <th>% 24h</th>
             <th>% 7d</th>
         </tr>
-        <tr ng-repeat="items in mainResult|filter:search|orderBy:sort">
+        <tr class="parent" ng-repeat="items in mainResult|filter:search|orderBy:sort">
             <td class="index">{{$index+1}}</td>
             <td><img src="{{items.source}}" alt="{{$index}}img"> {{items.name}} </td>
             <td>{{items.symbol}}</td>
-            <td>{{items.market_cap_usd}}</td>
-            <td>{{items.price_usd}}</td>
+            <td>{{items.market_cap_usd|currency}}</td>
+            <td>{{items.price_usd|currency}}</td>
             <td>{{items.available_supply}}</td>
-            <td>{{items["24h_volume_usd"]}}</td>
-            <td>{{items.percent_change_1h}}</td>
-            <td>{{items.percent_change_24h}}</td>
-            <td>{{items.percent_change_7d}}</td>
+            <td>{{items["24h_volume_usd"]|currency}}</td>
+            <td ng-style="{{items.percent_change_1h}}>0?{'color':'green'}:{'color':'red'}">{{items.percent_change_1h}}%</td>
+            <td ng-style="{{items.percent_change_24h}}>0?{'color':'green'}:{'color':'red'}">{{items.percent_change_24h}}%</td>
+            <td ng-style="{{items.percent_change_7d}}>0?{'color':'green'}:{'color':'red'}">{{items.percent_change_7d}}%</td>
         </tr>
     </table>
 
