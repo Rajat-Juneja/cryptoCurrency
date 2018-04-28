@@ -21,13 +21,18 @@
 <body ng-app="hortari" ng-controller="ctrl" data-ng-init="showItems()">
 
     <!-- <input type="text" placeholder="Enter name to search" ng-model="search"> -->
-    Market Cap: 
-    <select ng-model="search.market_cap_usd">
-        <option selected="true">All</option>
+     
+    <!-- <select ng-model="select" ng-change="search1(option)">
+        <option ng-selected="true">All</option>
         <option>$1 Billion +</option>
         <option>$100 Million - $1 Billion</option>
-    </select>
+    </select> -->
 
+    Market Cap:
+    <select ng-model="search1" ng-options="opt.name for opt in firstOptions" ng-change="getOption1()"></select>
+
+    Price:
+    <select ng-model="search2" ng-options="opt.name for opt in secondOptions" ng-change="getOption2()"></select>
 
         <!-- <select ng-model="currencies">
             <option selected="true">USD</option>
