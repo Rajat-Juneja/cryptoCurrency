@@ -18,21 +18,18 @@
     <script src="Js/controller.js"></script>
 
 </head>
-<body ng-app="hortari" ng-controller="ctrl" data-ng-init="showItems()">
+<body ng-app="hortari" ng-controller="ctrl">
 
-    <!-- <input type="text" placeholder="Enter name to search" ng-model="search"> -->
-     
-    <!-- <select ng-model="select" ng-change="search1(option)">
-        <option ng-selected="true">All</option>
-        <option>$1 Billion +</option>
-        <option>$100 Million - $1 Billion</option>
-    </select> -->
-
+   <div class="searching container">
     Market Cap:
-    <select ng-model="search1" ng-options="opt.name for opt in firstOptions" ng-change="getOption1()"></select>
+    <select ng-model="search1" ng-options="opt.name for opt in firstOptions" ng-change="getOption(1)"></select>
 
     Price:
-    <select ng-model="search2" ng-options="opt.name for opt in secondOptions" ng-change="getOption2()"></select>
+    <select ng-model="search2" ng-options="opt.name for opt in secondOptions" ng-change="getOption(2)"></select>
+
+    Volume(24h):
+    <select ng-model="search3" ng-options="opt.name for opt in thirdOptions" ng-change="getOption(3)"></select>
+</div>
 
         <!-- <select ng-model="currencies">
             <option selected="true">USD</option>
@@ -55,7 +52,7 @@
         </tr>
         <tr class="parent" ng-repeat="items in mainResult|filter:search|orderBy:sort">
             <td class="index">{{$index+1}}</td>
-            <td><img src="{{items.source}}" alt="{{$index}}img"> {{items.name}} </td>
+            <td> <a href="" data-toggle="modal" data-target="#exampleModal" ng-click="fillIt(items)"> <img src="{{items.source}}" alt="{{$index}}img">  {{items.name}}  </a> </td>
             <td>{{items.symbol}}</td>
             <td>{{items.market_cap_usd|currency}}</td>
             <td>{{items.price_usd|currency}}</td>
@@ -67,6 +64,32 @@
         </tr>
     </table>
 
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="exampleModalLabel">{{modal.name}}</h2>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <h4> Symbol : {{modal.symbol}}</h4>
+              <h4> Market Cap : {{modal.market_cap_usd|currency}}</h4>
+              <h4> Price : {{modal.price_usd|currency}}</h4>
+              <h4> Circulating Supply : {{modal.available_supply}}</h4>
+              <h4> Volume(24h) : {{modal["24h_volume_usd"]|currency}}</h4>
+              <h5> %1h : {{modal.percent_change_1h}}%</h5>
+              <h5> %24h : {{modal.percent_change_24h}}%</h5>
+              <h5> %7d : {{modal.percent_change_7d}}%</h5>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
 <div ng-show="loaded" class="loading">

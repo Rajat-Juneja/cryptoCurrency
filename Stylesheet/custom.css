@@ -7,10 +7,18 @@ body{
     padding: 0;
 }
 
+div.searching{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 table{
     width: 100%;
     border-right: none !important;
     border: 1px solid rgba(0,0,0,0.2);
+    margin-top: 2%;
 }
 
 table tr{
@@ -55,4 +63,8 @@ div.loading h1{
 
 div.loading img{
     width: 10%;
+}
+
+div.modal-body{
+    text-align: center;
 }
