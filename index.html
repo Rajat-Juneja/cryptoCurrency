@@ -30,12 +30,9 @@
     Volume(24h):
     <select ng-model="search3" ng-options="opt.name for opt in thirdOptions" ng-change="getOption(3)"></select>
 </div>
-
-        <!-- <select ng-model="currencies">
-            <option selected="true">USD</option>
-            optio
-        </select> -->
-
+<div class="searchbar">
+<input type="text" placeholder="Enter to search" ng-model="search.name">
+</div>
 
     <table class="container"> 
         <tr class="heading">
@@ -50,7 +47,7 @@
             <th>% 24h</th>
             <th>% 7d</th>
         </tr>
-        <tr class="parent" ng-repeat="items in mainResult|filter:search|orderBy:sort">
+        <tr class="parent" ng-repeat="items in mainResult|filter:search">
             <td class="index">{{$index+1}}</td>
             <td> <a href="" data-toggle="modal" data-target="#exampleModal" ng-click="fillIt(items)"> <img ng-src="{{items.source}}" alt="{{$index}}img">  {{items.name}}  </a> </td>
             <td>{{items.symbol}}</td>
