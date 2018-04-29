@@ -52,7 +52,7 @@
         </tr>
         <tr class="parent" ng-repeat="items in mainResult|filter:search|orderBy:sort">
             <td class="index">{{$index+1}}</td>
-            <td> <a href="" data-toggle="modal" data-target="#exampleModal" ng-click="fillIt(items)"> <img src="{{items.source}}" alt="{{$index}}img">  {{items.name}}  </a> </td>
+            <td> <a href="" data-toggle="modal" data-target="#exampleModal" ng-click="fillIt(items)"> <img ng-src="{{items.source}}" alt="{{$index}}img">  {{items.name}}  </a> </td>
             <td>{{items.symbol}}</td>
             <td>{{items.market_cap_usd|currency}}</td>
             <td>{{items.price_usd|currency}}</td>
